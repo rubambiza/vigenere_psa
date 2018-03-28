@@ -3,7 +3,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
-import javax.swing.SwingConstants;
+;
 import javax.swing.BoxLayout;
 
 import java.awt.Font;
@@ -11,10 +11,10 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Dimension;
 
-/*************************************************
+/***************************
 * @author Gloire Rubambiza
 * @since 03/10/2017
-**************************************************/
+***************************/
 public class VigenereSquarePanel extends JPanel {
 
   /** Objects of the class are now serializable. */
@@ -50,7 +50,7 @@ public class VigenereSquarePanel extends JPanel {
     alphabetSquare = new JLabel[row][col];
     for (int i = 0; i < row; i++) {
       for (int j = 0; j < col; j++) {
-        alphabetSquare[i][j] = new JLabel("X");
+        alphabetSquare[i][j] = new JLabel("X", (int) CENTER_ALIGNMENT);
         alphabetSquare[i][j].setPreferredSize(new Dimension(width,height));
         setStandards(alphabetSquare[i][j]);
         add(alphabetSquare[i][j]);
@@ -70,13 +70,4 @@ public class VigenereSquarePanel extends JPanel {
     label.setBorder(line);
   }
 
-  // /**************************************************
-  // * Resets the label for the memory reference
-  // * based on the input.
-  // * @param pid is the process that made a reference.
-  // * @param page is the page that was referenced.
-  // **************************************************/
-  // public void setReference ( int pid, int page ) {
-  //   ref.setText("P" + pid + " referenced page " + page);
-  // }
 }
