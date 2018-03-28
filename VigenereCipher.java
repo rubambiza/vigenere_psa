@@ -39,7 +39,7 @@ public class VigenereCipher {
 
       for(int i=0;i<26;i++){
         for(int j=0;j<26;j++){
-          System.out.print(encBoard[i][j] + " ");
+          System.out.print(encBoard[i][j] + "  ");
         }
         System.out.println();
       }
