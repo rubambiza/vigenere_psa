@@ -1,0 +1,2 @@
+javac VigenereCipher.java
+java VigenereCipher
