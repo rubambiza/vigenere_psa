@@ -31,7 +31,7 @@ public class VigenereSquarePanel extends JPanel {
   private JLabel [][] alphabetSquare;
 
   /** The dimensions for the grid. */
-  private final int col = 26, row = 27;
+  private final int col = 26, row = 26;
 
   /** The dimensions for the labels. */
   private final int width = 20, height = 20;

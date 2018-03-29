@@ -33,8 +33,7 @@ public class CommandPanel extends JPanel {
   private InputPanel input;
 
   /** The array of action buttons. */
-  private JButton nextEncryption, exit;
-
+  private JButton nextEncryption, runToCompletion, exit;
 
   /** The dimensions for the grid. */
   private final int col = 2, row = 1;
@@ -55,17 +54,21 @@ public class CommandPanel extends JPanel {
     nextEncryption = new JButton("Next Encryption");
     nextEncryption.setPreferredSize(new Dimension(width,height));
 
+    runToCompletion = new JButton("Run to Completion");
+    runToCompletion.setPreferredSize(new Dimension(width,height));
+
     exit = new JButton("Exit");
     exit.setPreferredSize(new Dimension(width,height));
 
     setStandards();
     setLayout(new BorderLayout());
     add(nextEncryption, BorderLayout.WEST);
+    add(runToCompletion, BorderLayout.NORTH);
     add(exit, BorderLayout.EAST);
     add(input, BorderLayout.CENTER);
 
     // Define the layout.
-    setPreferredSize(new Dimension(800,100));
+    setPreferredSize(new Dimension(1000,100));
     setVisible(true);
   }
 
@@ -77,7 +80,8 @@ public class CommandPanel extends JPanel {
     Border line = BorderFactory.createLineBorder(Color.WHITE, 2, true);
     nextEncryption.setFont(NORMAL_FONT);
     nextEncryption.setBorder(line);
-    nextEncryption.setBackground(Color.GRAY);
+    runToCompletion.setFont(NORMAL_FONT);
+    runToCompletion.setBorder(line);
     exit.setFont(NORMAL_FONT);
     exit.setBorder(line);
     exit.setForeground(Color.RED);
