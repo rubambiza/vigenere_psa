@@ -1,10 +1,21 @@
+/*******************************************************************************
+ * @author Colin Smith
+ * @since 3/28/2018
+ * ****************************************************************************/
+
 import java.util.Arrays;
 
-
+/******************************************************************************
+ * Main engine for the vig cipher visualization project
+ * ***************************************************************************/
 public class VigenereCipher {
+
+    int encCnt = 0;
+    int decCnt = 0;
+
     public static void main(String[] args) {
       String key = "VIGENERECIPHER";
-      String ori = "Beware the Jabberwock, my son! The jaws that bite, the claws that catch!";
+      String ori = "Sally sells sea shells down by the sea shore.";
       System.out.println("String: " + ori + "\nKey: " + key);
 
       VigenereCipher vig = new VigenereCipher();
@@ -45,7 +56,21 @@ public class VigenereCipher {
       }
     }
 
-    static String encrypt(String text, final String key) {
+    /*
+    for each character {
+      board is default colors
+      pass characterToEncrypt, pass spotInKeyString
+      highlight column and row
+      return encryptedCharacter
+      display encryptedCharacter
+      wait for user to press enter
+    }
+    */
+
+    static void encChar(char character, final String key, char[][] board){
+    }
+
+    static String encrypt(String text, final String key, int spotInKey) {
         String res = "";
         text = text.toUpperCase();
         for (int i = 0, j = 0; i < text.length(); i++) {
@@ -53,6 +78,12 @@ public class VigenereCipher {
             if (c < 'A' || c > 'Z') continue;
             res += (char)((c + key.charAt(j) - 2 * 'A') % 26 + 'A');
             j = ++j % key.length();
+            // if (slowEncrypt) {
+            //   while(true) {
+            //     if (continue.clicked())
+            //     break;
+            //   }
+            // }
         }
         return res;
     }
