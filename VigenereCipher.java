@@ -22,14 +22,14 @@ public class VigenereCipher {
       //is true if the user wants to continue seeing how the process works
       boolean slowEncrypt = true;
 
+      //THESE'LL NEED TO BE REPLACED WITH THE GUI INPUT
       String key = "VIGENERECIPHER";
-      String ori = "Sally sells sea shells down by the sea shore.";
+      String ori = "Bums";
       System.out.println("String: " + ori + "\nKey: " + key);
 
       VigenereCipher vig = new VigenereCipher();
       char[][] board = new char[26][26];
       vig.generateBoard(board);
-      // vig.printBoard(board, 13, 13);
 
       String enc = encrypt(ori, key, slowEncrypt, board);
       System.out.println("Encrypted Message: " + enc);
@@ -42,7 +42,7 @@ public class VigenereCipher {
     * for our gui based board later.
     * @param encBoard is the 2d char array used to visualize the V Cipher
     ***************************************************************************/
-    public void generateBoard(char[][] encBoard){
+    static void generateBoard(char[][] encBoard){
       //Displacement is used to make the incrementing aspect of the board
       //IntToChar holds the current value of the next letter on the board
       int disp = 26, intToChar = 0;
@@ -77,9 +77,9 @@ public class VigenereCipher {
     static void printBoard(char[][] encBoard, int xAxis, int yAxis){
       for(int i=0;i<26;i++){
         for(int j=0;j<26;j++){
-          if(i == yAxis && j == xAxis)
+          if(i == yAxis && j == xAxis) //Intersection
             System.out.print(ANSI_RED + encBoard[i][j] + "  " + ANSI_RESET); //red text
-          else if(i == yAxis || j == xAxis)
+          else if(i == yAxis || j == xAxis) //row/col
             System.out.print(ANSI_GREEN + encBoard[i][j] + "  " + ANSI_RESET); //green text
           else
             System.out.print(encBoard[i][j] + "  "); //white text
@@ -106,9 +106,6 @@ public class VigenereCipher {
         String res = "";
         text = text.toUpperCase();
 
-
-        int bums = 0;
-
         for (int i = 0, j = 0; i < text.length(); i++) {
             char c = text.charAt(i);
             if (c < 'A' || c > 'Z') continue;
@@ -125,7 +122,9 @@ public class VigenereCipher {
 
               printBoard(encBoard, xAxis, yAxis);
 
-              // WAIT FOR THE BUTTON CLICK HERE
+/************************************************************************
+* WAIT FOR THE BUTTON CLICK HERE
+************************************************************************/
               // while(true) {
               //   // NEED A FLAG BUTTON HERE
               //   // if (continue.clicked())
