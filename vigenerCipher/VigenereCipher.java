@@ -5,6 +5,7 @@ package vigenerCipher;
  * @since 3/28/2018
  * ****************************************************************************/
 
+import javax.swing.*;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
@@ -128,11 +129,7 @@ public class VigenereCipher {
 /************************************************************************
 * WAIT FOR THE BUTTON CLICK HERE
 ************************************************************************/
-              // while(true) {
-              //   // NEED A FLAG BUTTON HERE
-              //   // if (continue.clicked())
-              //   // break;
-              // }
+                JOptionPane.showMessageDialog(null, "Close this window to continue");
             }
         }
         return res;

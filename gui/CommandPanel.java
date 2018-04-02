@@ -1,7 +1,6 @@
 package gui;
 
 import vigenerCipher.VigenereCipher;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -113,16 +112,17 @@ public class CommandPanel extends JPanel {
 
           if (actionEvent.getSource() == runToCompletion) {
               String enc = VigenereCipher.encrypt(input.getCleartextString(), input.getKeyString(), false, VigenereCipher.generateBoard(new char[26][26]));
-              char[][] arr = VigenereCipher.generateBoard(new char[26][26]);
-              for (char[] chars : arr) {
-                  System.out.println(chars);
-              }
-              System.out.println("\n\n\n");
+//              char[][] arr = VigenereCipher.generateBoard(new char[26][26]);
+//              for (char[] chars : arr) {
+//                  System.out.println(chars);
+//              }
+//              System.out.println("\n\n\n");
               System.out.println(enc);
           }
 
           if (actionEvent.getSource() == nextEncryption) {
-
+              String enc = VigenereCipher.encrypt(input.getCleartextString(), input.getKeyString(), true, VigenereCipher.generateBoard(new char[26][26]));
+              System.out.println(enc);
           }
       }
   }
