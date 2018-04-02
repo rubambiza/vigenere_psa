@@ -1,3 +1,5 @@
+package vigenerCipher;
+
 /*******************************************************************************
  * @author Colin Smith
  * @since 3/28/2018
@@ -42,7 +44,7 @@ public class VigenereCipher {
     * for our gui based board later.
     * @param encBoard is the 2d char array used to visualize the V Cipher
     ***************************************************************************/
-    static void generateBoard(char[][] encBoard){
+    public static char[][] generateBoard(char[][] encBoard){
       //Displacement is used to make the incrementing aspect of the board
       //IntToChar holds the current value of the next letter on the board
       int disp = 26, intToChar = 0;
@@ -62,6 +64,7 @@ public class VigenereCipher {
         }
         disp--;
       }
+      return encBoard;
     }
 
 
@@ -74,7 +77,7 @@ public class VigenereCipher {
     * @param xAxis coordinate for j in the double for loop - used for IDing selected column
     * @param yAxis coordinate for i in the double for loop - used for IDing selected row
     ***************************************************************************/
-    static void printBoard(char[][] encBoard, int xAxis, int yAxis){
+    public static void printBoard(char[][] encBoard, int xAxis, int yAxis){
       for(int i=0;i<26;i++){
         for(int j=0;j<26;j++){
           if(i == yAxis && j == xAxis) //Intersection
@@ -101,7 +104,7 @@ public class VigenereCipher {
 
 
 
-    static String encrypt(String text, final String key, boolean flag, char[][] encBoard) {
+    public static String encrypt(String text, final String key, boolean flag, char[][] encBoard) {
         int counter = 0; //used for checking spot in the key and plaintext
         String res = "";
         text = text.toUpperCase();
@@ -135,7 +138,7 @@ public class VigenereCipher {
         return res;
     }
 
-    static String decrypt(String text, final String key) {
+    public static String decrypt(String text, final String key) {
         String res = "";
         text = text.toUpperCase();
         for (int i = 0, j = 0; i < text.length(); i++) {

@@ -1,3 +1,5 @@
+package gui;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -29,7 +31,7 @@ public class InputPanel extends JPanel {
   private JPanel input;
 
   /** The text areas for input. */
-  private JTextArea textArea, keyTextArea;
+  private JTextArea clearTextArea, keyTextArea;
 
   /** The dimensions for the grid. */
   private final int col = 2, row = 2;
@@ -46,13 +48,13 @@ public class InputPanel extends JPanel {
 
     input = new JPanel();
 
-    keyTextArea = new JTextArea("Enter plain text");
+    keyTextArea = new JTextArea("Enter Key Text");
     JScrollPane keyScroll = new JScrollPane(keyTextArea);
     keyTextArea.setEditable(true);
 
-    textArea = new JTextArea("Enter Key");
-    JScrollPane textScroll = new JScrollPane(textArea);
-    textArea.setEditable(true);
+    clearTextArea = new JTextArea("Enter Plain Text");
+    JScrollPane textScroll = new JScrollPane(clearTextArea);
+    clearTextArea.setEditable(true);
 
     setStandards();
 
@@ -67,14 +69,27 @@ public class InputPanel extends JPanel {
   }
 
   /**************************************
+   * Returns the key as a String.
+   ***************************************/
+  public String getKeyString() {
+    return keyTextArea.getText();
+  }
+
+  /**************************************
+   * Returns the cleartext as a String.
+   ***************************************/
+  public String getCleartextString() {
+    return clearTextArea.getText();
+  }
+
+  /**************************************
   * Sets some aesthetics for the panel.
   ***************************************/
   private void setStandards () {
-
     Border line = BorderFactory.createLineBorder(Color.WHITE, 2, true);
     keyTextArea.setFont(NORMAL_FONT);
     keyTextArea.setBorder(line);
-    textArea.setFont(NORMAL_FONT);
-    textArea.setBorder(line);
+    clearTextArea.setFont(NORMAL_FONT);
+    clearTextArea.setBorder(line);
   }
 }

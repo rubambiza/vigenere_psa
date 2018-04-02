@@ -1,3 +1,7 @@
+package gui;
+
+import vigenerCipher.VigenereCipher;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -11,6 +15,8 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /*************************************************
 * @author Gloire Rubambiza
@@ -41,6 +47,9 @@ public class CommandPanel extends JPanel {
   /** The dimensions for the buttons. */
   private final int width = 200, height = 75;
 
+  /** The listener for the buttons.*/
+  private ButtonListener listener;
+
   /*******************************************************
   * Instantiates the buttons to be used for user actions.
   *******************************************************/
@@ -48,17 +57,22 @@ public class CommandPanel extends JPanel {
 
     super();
 
+    listener = new ButtonListener();
+
     command = new JPanel();
     input = new InputPanel();
 
     nextEncryption = new JButton("Next Encryption");
     nextEncryption.setPreferredSize(new Dimension(width,height));
+    nextEncryption.addActionListener(listener);
 
     runToCompletion = new JButton("Run to Completion");
     runToCompletion.setPreferredSize(new Dimension(width,height));
+    runToCompletion.addActionListener(listener);
 
     exit = new JButton("Exit");
     exit.setPreferredSize(new Dimension(width,height));
+    exit.addActionListener(listener);
 
     setStandards();
     setLayout(new BorderLayout());
@@ -87,6 +101,30 @@ public class CommandPanel extends JPanel {
     exit.setForeground(Color.RED);
     input.setFont(NORMAL_FONT);
     input.setForeground(Color.GRAY);
+  }
+
+  private class ButtonListener implements ActionListener {
+
+      @Override
+      public void actionPerformed(ActionEvent actionEvent) {
+          if (actionEvent.getSource() == exit) {
+              System.exit(1);
+          }
+
+          if (actionEvent.getSource() == runToCompletion) {
+              String enc = VigenereCipher.encrypt(input.getCleartextString(), input.getKeyString(), false, VigenereCipher.generateBoard(new char[26][26]));
+              char[][] arr = VigenereCipher.generateBoard(new char[26][26]);
+              for (char[] chars : arr) {
+                  System.out.println(chars);
+              }
+              System.out.println("\n\n\n");
+              System.out.println(enc);
+          }
+
+          if (actionEvent.getSource() == nextEncryption) {
+
+          }
+      }
   }
 
 }
