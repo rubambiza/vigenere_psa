@@ -72,14 +72,14 @@ public class InputPanel extends JPanel {
    * Returns the key as a String.
    ***************************************/
   public String getKeyString() {
-    return keyTextArea.getText();
+    return keyTextArea.getText().toUpperCase().replace(" ", "");
   }
 
   /**************************************
    * Returns the cleartext as a String.
    ***************************************/
   public String getCleartextString() {
-    return clearTextArea.getText();
+    return clearTextArea.getText().toUpperCase().replace(" ", "");
   }
 
   /**************************************
