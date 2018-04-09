@@ -4,11 +4,9 @@ import vigenerCipher.VigenereCipher;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-;
 
 import java.awt.Font;
 import java.awt.Color;
-import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -35,7 +33,7 @@ public class CommandPanel extends JPanel {
     private InputPanel input;
 
     /** The array of action buttons. */
-    private JButton nextEncryption, runToCompletion, exit;
+    private static JButton nextEncryption, runToCompletion, exit;
 
     /** The dimensions for the grid. */
     private final int col = 2, row = 1;
@@ -116,18 +114,27 @@ public class CommandPanel extends JPanel {
             }
 
             if (actionEvent.getSource() == runToCompletion) {
+                enableButtons(false);
                 String enc = VigenereCipher.encrypt(input.getCleartextString(), input.getKeyString(), false, VigenereCipher.generateBoard(new char[26][26]));
-                System.out.println(enc);
+                JOptionPane.showMessageDialog(null, "Your encrypted message is: " + enc);
+                enableButtons(true);
             }
 
             if (actionEvent.getSource() == nextEncryption) {
+                enableButtons(false);
                 String enc = VigenereCipher.encrypt(input.getCleartextString(), input.getKeyString(), true, VigenereCipher.generateBoard(new char[26][26]));
-                System.out.println(enc);
+                JOptionPane.showMessageDialog(null, "Your encrypted message is: " + enc);
+                enableButtons(true);
             }
         }
     }
 
     public boolean isAlpha(String input) {
         return input.chars().allMatch(Character::isLetter);
+    }
+
+    public static void enableButtons(boolean enabled) {
+        runToCompletion.setEnabled(enabled);
+        nextEncryption.setEnabled(enabled);
     }
 }

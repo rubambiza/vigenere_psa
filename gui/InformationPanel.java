@@ -87,25 +87,8 @@ public class InformationPanel extends JPanel {
     cipherAlphabet.setForeground(Color.YELLOW);
   }
 
-  public static void changeDisplayState(String newKey, int keyLetter, String newPlainText, String newAlphabet) {
-    char[] t = newKey.toCharArray();
-    String formattedTxt = "";
-    for (int i = 0; i < t.length; i++) {
-      System.out.println(t[i]);
-      
-      if (t[i] == newKey.charAt(keyLetter)) {
-        formattedTxt += String.format("<html><font color=YELLOW>%s</font></html>", t[i]);
-      } else {
-        formattedTxt += t[i];
-      }
-    }
-    key.setText(formattedTxt);
-    System.out.println(formattedTxt);
-
-
-
-
-
+  public static void changeDisplayState(String newKey, String newPlainText, String newAlphabet) {
+    key.setText(keyDisplay + newKey);
     plainLetter.setText(plainTextDisplay + newPlainText);
     cipherAlphabet.setText(alphabetDisplay + newAlphabet);
   }

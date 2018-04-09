@@ -5,24 +5,25 @@ package vigenerCipher;
  * @since 3/28/2018
  * ****************************************************************************/
 
+import gui.CommandPanel;
 import gui.InformationPanel;
 import gui.VigenereSquarePanel;
 
 import javax.swing.*;
+import java.awt.event.ComponentAdapter;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /******************************************************************************
  * Main engine for the vig cipher visualization project
  * ***************************************************************************/
 public class VigenereCipher {
+    private static final String[] alphaArray = {"B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "A"};
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
-
-    int encCnt = 0;
-    int decCnt = 0;
-
 
     public static void main(String[] args) {
         //is true if the user wants to continue seeing how the process works
@@ -98,7 +99,6 @@ public class VigenereCipher {
 
 
     public static String encrypt(String text, final String key, boolean flag, char[][] encBoard) {
-        int counter = 0; //used for checking spot in the key and plaintext
         String res = "";
         text = text.toUpperCase();
 
@@ -114,19 +114,12 @@ public class VigenereCipher {
                 int xAxis = text.charAt(i) - 65;
                 //since the yAxis starts with B at the top, it needs a displacement
                 int yAxis = key.charAt(tempJ) - 65 - 1;
-                String asciiVal = Character.toString((char) yAxis);
                 if (yAxis == -1)
                     yAxis += 26;
-                System.out.println(xAxis);
-                System.out.println(yAxis);
                 VigenereSquarePanel.highlightSquares(xAxis, yAxis);
                 printBoard(encBoard, xAxis, yAxis);
-                InformationPanel.changeDisplayState(key, j, text, asciiVal);
-
-/************************************************************************
- * WAIT FOR THE BUTTON CLICK HERE
- ************************************************************************/
-                JOptionPane.showMessageDialog(null, "Close this window to continue");
+                JOptionPane.showMessageDialog(null, "Press enter to encrypt the next character");
+                InformationPanel.changeDisplayState(key, text, alphaArray[yAxis]);
                 VigenereSquarePanel.resetBoard();
             }
         }
