@@ -1,10 +1,5 @@
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.File;
+package gui;
 
-import java.util.Queue;
-import java.util.LinkedList;
 /******************************************************
 * Main entry into the program.
 * @author Gloire Rubambiza

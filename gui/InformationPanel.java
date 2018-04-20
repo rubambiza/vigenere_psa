@@ -1,3 +1,5 @@
+package gui;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -5,6 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 ;
 import javax.swing.BoxLayout;
+import javax.swing.text.Highlighter;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -28,14 +31,19 @@ public class InformationPanel extends JPanel {
   private JPanel info;
 
   /** The label for the memory reference. */
-  private JLabel key, plainLetter, cipherAlphabet;
-
+  private static JLabel key, plainLetter, cipherAlphabet;
 
   /** The dimensions for the grid. */
   private final int col = 3, row = 1;
 
   /** The dimensions for the buttons. */
   private final int width = 200, height = 75;
+
+  /**  The default strings for the display. */
+  private static final String keyDisplay = "Key: ", plainTextDisplay = "Plain Text Letter: ", alphabetDisplay = "Cipher Alphabet: ";
+
+  /** The html text used for highlighting a letter. */
+ // private static final String highlightBefore = "<html><div style=\"color:green\">", highlightAfter = "</div></html>";
 
   /*******************************************************
   * Instantiates the buttons to be used for user actions.
@@ -46,9 +54,9 @@ public class InformationPanel extends JPanel {
 
     info = new JPanel();
 
-    key = new JLabel("Key: ");
-    plainLetter = new JLabel("Plain Text Letter: ");
-    cipherAlphabet = new JLabel("Cipher Alphabet: ");
+    key = new JLabel(keyDisplay);
+    plainLetter = new JLabel(plainTextDisplay);
+    cipherAlphabet = new JLabel(alphabetDisplay);
     setStandards();
 
     // Define the layout.
@@ -77,5 +85,11 @@ public class InformationPanel extends JPanel {
     cipherAlphabet.setFont(NORMAL_FONT);
     cipherAlphabet.setBorder(line);
     cipherAlphabet.setForeground(Color.YELLOW);
+  }
+
+  public static void changeDisplayState(String newKey, String newPlainText, String newAlphabet) {
+    key.setText(keyDisplay + newKey);
+    plainLetter.setText(plainTextDisplay + newPlainText);
+    cipherAlphabet.setText(alphabetDisplay + newAlphabet);
   }
 }

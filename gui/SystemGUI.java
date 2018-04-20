@@ -1,3 +1,5 @@
+package gui;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -51,12 +53,12 @@ public class SystemGUI extends JFrame {
     command = new CommandPanel();
     vSquare = new VigenereSquarePanel();
     setTitle("Vigenere PSA Project");
-    setSize(1040, 1200);
+    setSize(1500, 1500);
     setLayout(new BoxLayout(getContentPane(),BoxLayout.Y_AXIS));
     add(info);
     add(vSquare);
     add(command);
-    setBoundaries ();
+    setBoundaries();
     pack();
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setVisible(true);
